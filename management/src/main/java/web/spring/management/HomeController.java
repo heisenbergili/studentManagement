@@ -4,20 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import web.spring.management.repository.CourseDB;
-import web.spring.management.repository.StudentDB;
+import web.spring.management.service.CourseService;
 
 
 
 @Controller
 public class HomeController {
+
     @Autowired
-    private CourseDB courseDB;
+    private CourseService courseService;
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("courses", courseDB.findAll());
+        model.addAttribute("courses", courseService.getCourses());
         return "course";
     }
     
