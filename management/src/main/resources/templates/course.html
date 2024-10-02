@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Course</title>
+</head>
+
+<body>
+    Your courses are there
+    <table>
+        <tr>
+            <th>Acronym</th>
+            <th>Title</th>
+            <th>ECTS</th>
+        </tr>
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.id}">nom</td>
+            <td th:text="${course.title}">nom</td>
+            <td th:text="${course.credits}">nom</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
