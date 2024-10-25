@@ -10,16 +10,21 @@
 
 <body>
     Your courses are there
-    <table>
+    <span th:if="${courses.isEmpty()}">
+        There's no courses
+    </span>
+    <table th:unless="${courses.isEmpty()}">
         <tr>
             <th>Acronym</th>
             <th>Title</th>
             <th>ECTS</th>
         </tr>
         <tr th:each="course : ${courses}">
-            <td th:text="${course.id}">nom</td>
-            <td th:text="${course.title}">nom</td>
-            <td th:text="${course.credits}">nom</td>
+            <td>
+                <a th:href="@{/details(id=${course.id})}" th:text="${course.id}"></a>
+            </td>
+            <td th:text="${course.title}"></td>
+            <td th:text="${course.credits}"></td>
         </tr>
     </table>
 
