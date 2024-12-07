@@ -1,5 +1,7 @@
 package web.spring.management.service;
 
+
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,23 @@ public class CourseService {
     public Optional<Course> getDetails(String id){
         return courseDB.findById(id);
     }
+
+    /**
+     * If it save with succes return the object
+     * otherwise return null?
+     * @param course
+     * @return
+     */
+    public Course addCourse(Course course){
+        return courseDB.save(course);
+    }
+
+
+    public List<Course> creaditsGreateThanEqual(int credits){
+        return courseDB.findByCreditsGreaterThanEqual(credits);
+    }
+
+
 
 
 }

@@ -1,0 +1,16 @@
+<div th:fragment="students-table">
+    <table id="students-table" class="table">
+        <tr>
+            <th class="table-primary">Number</th>
+            <th class="table-primary">Name</th>
+            <th class="table-primary">Gender</th>
+            <th class="table-primary">Section</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.number}"></td>
+            <td><a th:href="@{/student/details(number=${student.number})}" th:text="${student.name}" ></a></td>
+            <td th:text="${student.gender}"></td>
+            <td th:text="${student.section}"></td>
+        </tr>
+    </table>
+</div>

@@ -30,6 +30,11 @@
     </table>
 
 
+    
+    <div th:replace="~{fragments/student-table.html::students-table}">Error fragment</div>
+
+    <p>Retour à <a th:href="@{/}">la liste des cours</a></p>
+
 </body>
 
 </html>

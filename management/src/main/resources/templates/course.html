@@ -13,6 +13,22 @@
     <span th:if="${courses.isEmpty()}">
         There's no courses
     </span>
+
+    <!-- Formulaire -->
+    <form action="/add-course" th:object="${course}" method="post">
+        
+        <input type="text" th:field="*{id}" placeholder="Enter the course's id..." th:errorclass="errorField">
+        <input type="text" th:field="*{title}" placeholder="Enter the course's title...">
+        <input type="number" th:field="*{credits}">
+        <button type="submit">Add</button>
+        <div>
+            <span th:errors="*{id}"></span><br>
+            <span th:errors="*{title}"></span><br>
+            <span th:errors="*{credits}"></span>
+        </div>
+        
+    </form>
+
     <table th:unless="${courses.isEmpty()}">
         <tr>
             <th>Acronym</th>
@@ -27,6 +43,7 @@
             <td th:text="${course.credits}"></td>
         </tr>
     </table>
+
 
 </body>
 

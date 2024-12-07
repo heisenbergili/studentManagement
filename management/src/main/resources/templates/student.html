@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Students</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+        <script th:src="@{/main.js}"></script>
+</head>
+
+<body>
+
+
+    <span th:if="${students.isEmpty()}">
+        There's no students
+    </span>
+
+
+    <div layout:fragment="content">
+        Add a new Student
+        <form action="/student/add" th:object="${student}" method="post">
+            <div>
+                <span th:errors="*{name}"></span><br>
+                <span th:errors="*{gender}"></span><br>
+                <span th:errors="*{section}"></span>
+            </div>
+            <input type="text" th:field="*{name}" placeholder="Student name...">
+            <select name="gender" th:field="*{gender}">
+                <option th:each="gender : ${T(web.spring.management.model.enm.Gender).values()}" th:value="${gender}"
+                    th:text="${gender}"></option>
+            </select>
+            <select name="section" th:field="*{section}">
+                <option th:each="section : ${T(web.spring.management.model.enm.Section).values()}" th:value="${section}"
+                    th:text="${section}"></option>
+            </select>
+            <button type="submit">Add</button>
+
+            
+        </form>
+    </div>
+
+
+    <div th:replace="~{fragments/student-table.html::students-table}"></div>
+    <div style="text-align: center; margin-top: 20px;">
+        Search by name
+        <input id="search" type="text" placeholder="Search..."> 
+    </div>
+
+
+</body>
+
+</html>
